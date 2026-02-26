@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>APP4</name>
+            <name>Controller</name>
             <creation-uuid>e2786e10-7309-4219-b2f8-f396937c76b9</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>

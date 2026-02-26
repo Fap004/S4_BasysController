@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=APP4.X
+PROJECTNAME=S4_BasysController
 
 # Active Configuration
 DEFAULTCONF=default
