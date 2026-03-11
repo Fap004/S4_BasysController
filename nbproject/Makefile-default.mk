@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=ADC.c led.c main.c microphone.c timers.c OC.c test.c mef.c sys_init.c volume.c play.c speaker.c recording.c button.c UART_Tx.c UART_Rx.c parite_S.S modif_trame_S.S
+SOURCEFILES_QUOTED_IF_SPACED=main.c 7segments.c accelerometre.c broches.c delay.c i2c.c lcd.c mef_affichage.c mef_mode.c timer1.c uart.c adc.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/ADC.o ${OBJECTDIR}/led.o ${OBJECTDIR}/main.o ${OBJECTDIR}/microphone.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/OC.o ${OBJECTDIR}/test.o ${OBJECTDIR}/mef.o ${OBJECTDIR}/sys_init.o ${OBJECTDIR}/volume.o ${OBJECTDIR}/play.o ${OBJECTDIR}/speaker.o ${OBJECTDIR}/recording.o ${OBJECTDIR}/button.o ${OBJECTDIR}/UART_Tx.o ${OBJECTDIR}/UART_Rx.o ${OBJECTDIR}/parite_S.o ${OBJECTDIR}/modif_trame_S.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/ADC.o.d ${OBJECTDIR}/led.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/microphone.o.d ${OBJECTDIR}/timers.o.d ${OBJECTDIR}/OC.o.d ${OBJECTDIR}/test.o.d ${OBJECTDIR}/mef.o.d ${OBJECTDIR}/sys_init.o.d ${OBJECTDIR}/volume.o.d ${OBJECTDIR}/play.o.d ${OBJECTDIR}/speaker.o.d ${OBJECTDIR}/recording.o.d ${OBJECTDIR}/button.o.d ${OBJECTDIR}/UART_Tx.o.d ${OBJECTDIR}/UART_Rx.o.d ${OBJECTDIR}/parite_S.o.d ${OBJECTDIR}/modif_trame_S.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/7segments.o ${OBJECTDIR}/accelerometre.o ${OBJECTDIR}/broches.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/mef_affichage.o ${OBJECTDIR}/mef_mode.o ${OBJECTDIR}/timer1.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/adc.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/7segments.o.d ${OBJECTDIR}/accelerometre.o.d ${OBJECTDIR}/broches.o.d ${OBJECTDIR}/delay.o.d ${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/lcd.o.d ${OBJECTDIR}/mef_affichage.o.d ${OBJECTDIR}/mef_mode.o.d ${OBJECTDIR}/timer1.o.d ${OBJECTDIR}/uart.o.d ${OBJECTDIR}/adc.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/ADC.o ${OBJECTDIR}/led.o ${OBJECTDIR}/main.o ${OBJECTDIR}/microphone.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/OC.o ${OBJECTDIR}/test.o ${OBJECTDIR}/mef.o ${OBJECTDIR}/sys_init.o ${OBJECTDIR}/volume.o ${OBJECTDIR}/play.o ${OBJECTDIR}/speaker.o ${OBJECTDIR}/recording.o ${OBJECTDIR}/button.o ${OBJECTDIR}/UART_Tx.o ${OBJECTDIR}/UART_Rx.o ${OBJECTDIR}/parite_S.o ${OBJECTDIR}/modif_trame_S.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/7segments.o ${OBJECTDIR}/accelerometre.o ${OBJECTDIR}/broches.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/mef_affichage.o ${OBJECTDIR}/mef_mode.o ${OBJECTDIR}/timer1.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/adc.o
 
 # Source Files
-SOURCEFILES=ADC.c led.c main.c microphone.c timers.c OC.c test.c mef.c sys_init.c volume.c play.c speaker.c recording.c button.c UART_Tx.c UART_Rx.c parite_S.S modif_trame_S.S
+SOURCEFILES=main.c 7segments.c accelerometre.c broches.c delay.c i2c.c lcd.c mef_affichage.c mef_mode.c timer1.c uart.c adc.c
 
 
 
@@ -101,236 +101,156 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assembleWithPreprocess
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/parite_S.o: parite_S.S  .generated_files/flags/default/74b93a3b541534f93e6f946b31bf47c77b5e23d3 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/parite_S.o.d 
-	@${RM} ${OBJECTDIR}/parite_S.o 
-	@${RM} ${OBJECTDIR}/parite_S.o.ok ${OBJECTDIR}/parite_S.o.err 
-	${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/parite_S.o.d"  -o ${OBJECTDIR}/parite_S.o parite_S.S  -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/parite_S.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1 -mdfp="${DFP_DIR}"
-	@${FIXDEPS} "${OBJECTDIR}/parite_S.o.d" "${OBJECTDIR}/parite_S.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/modif_trame_S.o: modif_trame_S.S  .generated_files/flags/default/29dff1a0a15ca3505fbeea9a2b24be6572e81e17 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/modif_trame_S.o.d 
-	@${RM} ${OBJECTDIR}/modif_trame_S.o 
-	@${RM} ${OBJECTDIR}/modif_trame_S.o.ok ${OBJECTDIR}/modif_trame_S.o.err 
-	${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/modif_trame_S.o.d"  -o ${OBJECTDIR}/modif_trame_S.o modif_trame_S.S  -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/modif_trame_S.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1 -mdfp="${DFP_DIR}"
-	@${FIXDEPS} "${OBJECTDIR}/modif_trame_S.o.d" "${OBJECTDIR}/modif_trame_S.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
 else
-${OBJECTDIR}/parite_S.o: parite_S.S  .generated_files/flags/default/1cf068b586feeed8a5413e4cf162de5a8abdf606 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/parite_S.o.d 
-	@${RM} ${OBJECTDIR}/parite_S.o 
-	@${RM} ${OBJECTDIR}/parite_S.o.ok ${OBJECTDIR}/parite_S.o.err 
-	${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/parite_S.o.d"  -o ${OBJECTDIR}/parite_S.o parite_S.S  -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/parite_S.o.asm.d",--gdwarf-2 -mdfp="${DFP_DIR}"
-	@${FIXDEPS} "${OBJECTDIR}/parite_S.o.d" "${OBJECTDIR}/parite_S.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/modif_trame_S.o: modif_trame_S.S  .generated_files/flags/default/64ebe949798347758dfa2803be44bdde0b47338a .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/modif_trame_S.o.d 
-	@${RM} ${OBJECTDIR}/modif_trame_S.o 
-	@${RM} ${OBJECTDIR}/modif_trame_S.o.ok ${OBJECTDIR}/modif_trame_S.o.err 
-	${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/modif_trame_S.o.d"  -o ${OBJECTDIR}/modif_trame_S.o modif_trame_S.S  -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/modif_trame_S.o.asm.d",--gdwarf-2 -mdfp="${DFP_DIR}"
-	@${FIXDEPS} "${OBJECTDIR}/modif_trame_S.o.d" "${OBJECTDIR}/modif_trame_S.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
 endif
 
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/ADC.o: ADC.c  .generated_files/flags/default/4c392bb58e4c2cb5acdd2e241bbf0e0b66ab5043 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ADC.o.d 
-	@${RM} ${OBJECTDIR}/ADC.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ADC.o.d" -o ${OBJECTDIR}/ADC.o ADC.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/led.o: led.c  .generated_files/flags/default/c05f6349a0d558ded40a958b455bb5600d070041 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/led.o.d 
-	@${RM} ${OBJECTDIR}/led.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/led.o.d" -o ${OBJECTDIR}/led.o led.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/20a08bd28567ed892ff5baa72e7f678485241a0c .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/6b0040f4fb4b2a422144fdcf3cb067fed5abc459 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/microphone.o: microphone.c  .generated_files/flags/default/dbbdf11734123038ee1a177f82095fdd8d7dd679 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/7segments.o: 7segments.c  .generated_files/flags/default/ce7470336c18c6e7eba46b5b80d55d0315e272c2 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/microphone.o.d 
-	@${RM} ${OBJECTDIR}/microphone.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/microphone.o.d" -o ${OBJECTDIR}/microphone.o microphone.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/7segments.o.d 
+	@${RM} ${OBJECTDIR}/7segments.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/7segments.o.d" -o ${OBJECTDIR}/7segments.o 7segments.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/timers.o: timers.c  .generated_files/flags/default/4257db5bb82f1208da3db646b8728e313ae72a21 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/accelerometre.o: accelerometre.c  .generated_files/flags/default/37f33240e9cc666f93f84d6e6fbb37562250c9c6 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/timers.o.d 
-	@${RM} ${OBJECTDIR}/timers.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/timers.o.d" -o ${OBJECTDIR}/timers.o timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/accelerometre.o.d 
+	@${RM} ${OBJECTDIR}/accelerometre.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/accelerometre.o.d" -o ${OBJECTDIR}/accelerometre.o accelerometre.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/OC.o: OC.c  .generated_files/flags/default/ecb3daaaf42217de4090aa01fb524bee64df1ad1 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/broches.o: broches.c  .generated_files/flags/default/546fe117c03782e91ceb725b5ea8c471cda22b56 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/OC.o.d 
-	@${RM} ${OBJECTDIR}/OC.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/OC.o.d" -o ${OBJECTDIR}/OC.o OC.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/broches.o.d 
+	@${RM} ${OBJECTDIR}/broches.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/broches.o.d" -o ${OBJECTDIR}/broches.o broches.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/test.o: test.c  .generated_files/flags/default/a7c39c9775699a934f2b670212ce536f6ade20ea .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/delay.o: delay.c  .generated_files/flags/default/72f9ffbdf0c6db69914c5948e62526624494a070 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/test.o.d 
-	@${RM} ${OBJECTDIR}/test.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/test.o.d" -o ${OBJECTDIR}/test.o test.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/delay.o.d 
+	@${RM} ${OBJECTDIR}/delay.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/delay.o.d" -o ${OBJECTDIR}/delay.o delay.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/mef.o: mef.c  .generated_files/flags/default/4fbf9607919207b2b0705f082d970d6c1aabc322 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/i2c.o: i2c.c  .generated_files/flags/default/5a0ea6afc45d27010594ed6d2996069f9abde09b .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/mef.o.d 
-	@${RM} ${OBJECTDIR}/mef.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mef.o.d" -o ${OBJECTDIR}/mef.o mef.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/i2c.o.d 
+	@${RM} ${OBJECTDIR}/i2c.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/i2c.o.d" -o ${OBJECTDIR}/i2c.o i2c.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/sys_init.o: sys_init.c  .generated_files/flags/default/45a7e0de48118a87d6dd0892bb074303d9e68f6f .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/lcd.o: lcd.c  .generated_files/flags/default/81c0d4601b905f23ce36f3cf483806e4737c870a .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/sys_init.o.d 
-	@${RM} ${OBJECTDIR}/sys_init.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/sys_init.o.d" -o ${OBJECTDIR}/sys_init.o sys_init.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/lcd.o.d 
+	@${RM} ${OBJECTDIR}/lcd.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lcd.o.d" -o ${OBJECTDIR}/lcd.o lcd.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/volume.o: volume.c  .generated_files/flags/default/d931c5af6073e2e9266d9d69f226d1bb7d62bebb .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/mef_affichage.o: mef_affichage.c  .generated_files/flags/default/81fab56ffe9393f926cad47274c21294f30e308f .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/volume.o.d 
-	@${RM} ${OBJECTDIR}/volume.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/volume.o.d" -o ${OBJECTDIR}/volume.o volume.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/mef_affichage.o.d 
+	@${RM} ${OBJECTDIR}/mef_affichage.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mef_affichage.o.d" -o ${OBJECTDIR}/mef_affichage.o mef_affichage.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/play.o: play.c  .generated_files/flags/default/5735fd1a8b764f462ce25897a3a5dc104c21ae9b .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/mef_mode.o: mef_mode.c  .generated_files/flags/default/f7e2026fbd7cf79cb61c03136d444e43318f8fce .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/play.o.d 
-	@${RM} ${OBJECTDIR}/play.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/play.o.d" -o ${OBJECTDIR}/play.o play.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/mef_mode.o.d 
+	@${RM} ${OBJECTDIR}/mef_mode.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mef_mode.o.d" -o ${OBJECTDIR}/mef_mode.o mef_mode.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/speaker.o: speaker.c  .generated_files/flags/default/a1f47ffcb6eedd6bd57065bdc394d726039e65f6 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/timer1.o: timer1.c  .generated_files/flags/default/22ba6891145295a1f6d5dc365a80cc730d1e4b1 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/speaker.o.d 
-	@${RM} ${OBJECTDIR}/speaker.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/speaker.o.d" -o ${OBJECTDIR}/speaker.o speaker.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/timer1.o.d 
+	@${RM} ${OBJECTDIR}/timer1.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/timer1.o.d" -o ${OBJECTDIR}/timer1.o timer1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/recording.o: recording.c  .generated_files/flags/default/9784cd5986ac354e50e306617942bec7372e4141 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/uart.o: uart.c  .generated_files/flags/default/283d1fbbdaaeff62bd4def33b77aa9238e75ed62 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/recording.o.d 
-	@${RM} ${OBJECTDIR}/recording.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/recording.o.d" -o ${OBJECTDIR}/recording.o recording.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/uart.o.d 
+	@${RM} ${OBJECTDIR}/uart.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/uart.o.d" -o ${OBJECTDIR}/uart.o uart.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/button.o: button.c  .generated_files/flags/default/f063263d38795ae34d2dd64b29883fad8b28cf22 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/adc.o: adc.c  .generated_files/flags/default/50a988f8fcf873ed3bd204ddfa4abbfc7388db26 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/button.o.d 
-	@${RM} ${OBJECTDIR}/button.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/button.o.d" -o ${OBJECTDIR}/button.o button.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/UART_Tx.o: UART_Tx.c  .generated_files/flags/default/657d7d0e2d6c28042a692eb18d134800c4a63276 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/UART_Tx.o.d 
-	@${RM} ${OBJECTDIR}/UART_Tx.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/UART_Tx.o.d" -o ${OBJECTDIR}/UART_Tx.o UART_Tx.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/UART_Rx.o: UART_Rx.c  .generated_files/flags/default/5ccf52bbc0d1a6ff53ada22860d191817ddf3bc .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/UART_Rx.o.d 
-	@${RM} ${OBJECTDIR}/UART_Rx.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/UART_Rx.o.d" -o ${OBJECTDIR}/UART_Rx.o UART_Rx.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/adc.o.d 
+	@${RM} ${OBJECTDIR}/adc.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/adc.o.d" -o ${OBJECTDIR}/adc.o adc.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/ADC.o: ADC.c  .generated_files/flags/default/50d0455db03fa8ef2b39e7211f4f707db8938085 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ADC.o.d 
-	@${RM} ${OBJECTDIR}/ADC.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ADC.o.d" -o ${OBJECTDIR}/ADC.o ADC.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/led.o: led.c  .generated_files/flags/default/763c36217a388e70ca3c33d7d81373e9f606f732 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/led.o.d 
-	@${RM} ${OBJECTDIR}/led.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/led.o.d" -o ${OBJECTDIR}/led.o led.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/bb2ffe84388b63c09aed382d807aaab4c5c6ae2c .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/ab078fe1a72a8b13265b0924d54949314cd91a0a .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/microphone.o: microphone.c  .generated_files/flags/default/ff7ebad310aaee805b9e1549df8bcc41af1f75e8 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/7segments.o: 7segments.c  .generated_files/flags/default/ea9ae9b7686bfe86bbceae2bdedfa1ec44c36d40 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/microphone.o.d 
-	@${RM} ${OBJECTDIR}/microphone.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/microphone.o.d" -o ${OBJECTDIR}/microphone.o microphone.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/7segments.o.d 
+	@${RM} ${OBJECTDIR}/7segments.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/7segments.o.d" -o ${OBJECTDIR}/7segments.o 7segments.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/timers.o: timers.c  .generated_files/flags/default/62e512d2aaa1d7c855a2adbccaae5581c2d486d4 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/accelerometre.o: accelerometre.c  .generated_files/flags/default/ec8c003a345fc8bf30891a32abfc8ef89745dc83 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/timers.o.d 
-	@${RM} ${OBJECTDIR}/timers.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/timers.o.d" -o ${OBJECTDIR}/timers.o timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/accelerometre.o.d 
+	@${RM} ${OBJECTDIR}/accelerometre.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/accelerometre.o.d" -o ${OBJECTDIR}/accelerometre.o accelerometre.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/OC.o: OC.c  .generated_files/flags/default/d5f660b4229ef84fba6a38f00d3338e3be958b81 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/broches.o: broches.c  .generated_files/flags/default/f2958d3fba9ee2a7a690023b23f23424adae42f .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/OC.o.d 
-	@${RM} ${OBJECTDIR}/OC.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/OC.o.d" -o ${OBJECTDIR}/OC.o OC.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/broches.o.d 
+	@${RM} ${OBJECTDIR}/broches.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/broches.o.d" -o ${OBJECTDIR}/broches.o broches.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/test.o: test.c  .generated_files/flags/default/ad6c7a2ca3f7ca498a9f2e798338e3823eeabb36 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/delay.o: delay.c  .generated_files/flags/default/2978e3d8ccbb0dffb30a0031106d01ffa0c4951f .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/test.o.d 
-	@${RM} ${OBJECTDIR}/test.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/test.o.d" -o ${OBJECTDIR}/test.o test.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/delay.o.d 
+	@${RM} ${OBJECTDIR}/delay.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/delay.o.d" -o ${OBJECTDIR}/delay.o delay.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/mef.o: mef.c  .generated_files/flags/default/65ce5180020fb2268030667340295a6e8550f727 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/i2c.o: i2c.c  .generated_files/flags/default/df8cb71144702b389a2bc47eba84ff5233b66c5d .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/mef.o.d 
-	@${RM} ${OBJECTDIR}/mef.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mef.o.d" -o ${OBJECTDIR}/mef.o mef.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/i2c.o.d 
+	@${RM} ${OBJECTDIR}/i2c.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/i2c.o.d" -o ${OBJECTDIR}/i2c.o i2c.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/sys_init.o: sys_init.c  .generated_files/flags/default/99b99691fa46c663c4a33990a31b5a568e9a1e98 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/lcd.o: lcd.c  .generated_files/flags/default/8dfb168d1ad885d8ed7f1b95b9348677cd5c4ad1 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/sys_init.o.d 
-	@${RM} ${OBJECTDIR}/sys_init.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/sys_init.o.d" -o ${OBJECTDIR}/sys_init.o sys_init.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/lcd.o.d 
+	@${RM} ${OBJECTDIR}/lcd.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lcd.o.d" -o ${OBJECTDIR}/lcd.o lcd.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/volume.o: volume.c  .generated_files/flags/default/c061bb6dc03fb7e72e194af93cc08c5cae17ffad .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/mef_affichage.o: mef_affichage.c  .generated_files/flags/default/aa95684ede4a6c8063f54f1f0faab0077580fdfb .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/volume.o.d 
-	@${RM} ${OBJECTDIR}/volume.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/volume.o.d" -o ${OBJECTDIR}/volume.o volume.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/mef_affichage.o.d 
+	@${RM} ${OBJECTDIR}/mef_affichage.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mef_affichage.o.d" -o ${OBJECTDIR}/mef_affichage.o mef_affichage.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/play.o: play.c  .generated_files/flags/default/8bfeca948fbd6a63ad93806fac9d650ec06cf739 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/mef_mode.o: mef_mode.c  .generated_files/flags/default/f75870d16a643695c30972bff0ff3adfa4840114 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/play.o.d 
-	@${RM} ${OBJECTDIR}/play.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/play.o.d" -o ${OBJECTDIR}/play.o play.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/mef_mode.o.d 
+	@${RM} ${OBJECTDIR}/mef_mode.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mef_mode.o.d" -o ${OBJECTDIR}/mef_mode.o mef_mode.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/speaker.o: speaker.c  .generated_files/flags/default/efa379818475eb1b83d6508df767f3983858baa5 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/timer1.o: timer1.c  .generated_files/flags/default/bcf309eb4d3aa3e775a70a16779137cea3409e92 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/speaker.o.d 
-	@${RM} ${OBJECTDIR}/speaker.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/speaker.o.d" -o ${OBJECTDIR}/speaker.o speaker.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/timer1.o.d 
+	@${RM} ${OBJECTDIR}/timer1.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/timer1.o.d" -o ${OBJECTDIR}/timer1.o timer1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/recording.o: recording.c  .generated_files/flags/default/56d8b3b34556562e1fcdfeaaa2c519386add74f4 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/uart.o: uart.c  .generated_files/flags/default/ccaf5b796b2dab03eb89c0ea71f16f3852715846 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/recording.o.d 
-	@${RM} ${OBJECTDIR}/recording.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/recording.o.d" -o ${OBJECTDIR}/recording.o recording.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/uart.o.d 
+	@${RM} ${OBJECTDIR}/uart.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/uart.o.d" -o ${OBJECTDIR}/uart.o uart.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/button.o: button.c  .generated_files/flags/default/b14601dbec358ab48635d5054892d12daee815d3 .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
+${OBJECTDIR}/adc.o: adc.c  .generated_files/flags/default/45f762111611b1cd7abb3ecfed125b6de9d03c0f .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/button.o.d 
-	@${RM} ${OBJECTDIR}/button.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/button.o.d" -o ${OBJECTDIR}/button.o button.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/UART_Tx.o: UART_Tx.c  .generated_files/flags/default/634320d2359891912b25ac2d8d52e8cdbe7638fd .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/UART_Tx.o.d 
-	@${RM} ${OBJECTDIR}/UART_Tx.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/UART_Tx.o.d" -o ${OBJECTDIR}/UART_Tx.o UART_Tx.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/UART_Rx.o: UART_Rx.c  .generated_files/flags/default/503467f45a06f9449b0b561681e2a15a54629a3c .generated_files/flags/default/9482caba2dc1e17ca639a65609d3577e06590893
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/UART_Rx.o.d 
-	@${RM} ${OBJECTDIR}/UART_Rx.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/UART_Rx.o.d" -o ${OBJECTDIR}/UART_Rx.o UART_Rx.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/adc.o.d 
+	@${RM} ${OBJECTDIR}/adc.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/adc.o.d" -o ${OBJECTDIR}/adc.o adc.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
@@ -366,3 +286,11 @@ endif
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r build/default
 	${RM} -r dist/default
+
+# Enable dependency checking
+.dep.inc: .depcheck-impl
+
+DEPFILES=$(shell mplabwildcard ${POSSIBLE_DEPFILES})
+ifneq (${DEPFILES},)
+include ${DEPFILES}
+endif
