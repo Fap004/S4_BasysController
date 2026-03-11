@@ -5,27 +5,25 @@
     Louis-Félix Goneau (gonl2802)
 
   @File Name
-    adc.h
+    lcd.h
 
  **/
 /* ************************************************************************** */
 
-#ifndef _ADC_H  
-#define _ADC_H
+#ifndef _LCD_H  
+#define _LCD_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-    void ADC_Init_Manuel();
-    int ADC_Read_Manuel(int canal);
-    int calculer_vitesse();
-    float calculer_angle_joystick();
-
+    
+    void LCD_WriteByte(unsigned char data);
+    void LCD_Init();
+    void LCD_SetCursor(unsigned char ligne, unsigned char col);
+    void LCD_Print(char *str);
+    
 #ifdef __cplusplus
 }
 #endif
 
 #endif 
-
-

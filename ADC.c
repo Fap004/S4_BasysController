@@ -1,106 +1,68 @@
-/*APP3 */
-/* ADC.c */
-/*
-  Créateur :   paif1582 et RODL6305
-  Date :      7 février 2026
-  Revision :  1.0
+/* ************************************************************************** */
+/** Descriptive File Name
 
-  DESCRIPTION :
- configuration ADC et enregistrement de l'entrée audio dans la RAM 
+  @Author
+    Louis-Félix Goneau (gonl2802)
 
-  ENTRÉES :
-       
-  ENTRÉES/SORTIES :
-  
-  SORTIES :
+  @File Name
+    adc.c
 
-  RETOUR :
-    <Fournir le nom de la variable retournée par la fonction avec une brève
-     description d'elle-même.>
-*/
+ **/
+/* ************************************************************************** */
 
-#include "ADC.h"
 #include <xc.h>
 #include <sys/attribs.h>
 #include "config.h"
-#include "timers.h"
-#include "mef.h"
+#include "adc.h"
 
-volatile uint16_t audioBuffer[BUFFER_SIZE]; //stockage de la trame enregistrer
-volatile int ADC_index = 0;                 //Index permettant de naviguer dans le buffer
-volatile bool threshold = 0;                //Permet de connaitre si le seuil a été atteint
-int compteur=0;                             //Permet de rajouter un delais pour éviter que le bruit causé par le boutton lors de l'Activation de la fonction depasse le seuil minimum
-
-//ADC initialisation
-void ADC_Init()
-{   
-    AD1CON1 = 0;
-    AD1CON2 = 0;
-    AD1CON3 = 0;
-            
-    AD1CON1bits.FORM = 0b000;   //FORMAT OUTPUT
-    AD1CON1bits.SSRC = 0b010;   //Conversion Trigger Source Select bits
-    AD1CON1bits.ASAM = 0b1;     //ADC Sample Auto-Start bit
+void ADC_Init_Manuel() {
+    AD1CON1bits.ON = 0;     
     
-    AD1CON2bits.VCFG = 0b000;
-    AD1CON2bits.SMPI = 0b000;   //sample/Convert Sequences Per Interrupt Selection bits
-    AD1CON2bits.BUFM = 0b000;   //ADC Result Buffer Mode Select bit
-    AD1CON2bits.ALTS = 0;       //Always use MUX A input multiplexer settings
+    AD1CON1bits.SSRC = 0;  
+    AD1CON1bits.ASAM = 0;   
+    AD1CON1bits.FORM = 0;   
     
-    AD1CON3bits.ADRC = 0b0;     //ADC Conversion Clock Select bits
-    AD1CON3bits.SAMC = 15;      //Auto-sample Time bits
-    AD1CON3bits.ADCS = 2;       //ADC Conversion Clock Select bits
+    AD1CON2 = 0;            
+    AD1CON3bits.SAMC = 15;  
+    AD1CON3bits.ADCS = 2;   
     
-    AD1CHSbits.CH0NA = 0;       //Negative Input Select bit for MUX B
-    AD1CHSbits.CH0SA = 4;
+    IEC0bits.AD1IE = 0; 
     
-    IFS0bits.AD1IF = 0;
-    IPC5bits.AD1IP = 7;
-    IPC5bits.AD1IS = 0;
-    IEC0bits.AD1IE = 1;
-   
-    AD1CON1bits.ON = 1;       //ACTIVATION
- }
-
-//Fonction sauvegardant le bruit du microphone ou le joue directement selon la fonction
-void __ISR(_ADC_VECTOR, IPL7AUTO) ADC_ISR(void)
-{
-    // Échantillon transférer dans une variable pour des calculs
-    uint16_t sample10 = ADC1BUF0;
-
-    if (Etat == ETAT_INTERCOM)
-    {
-        // Envoi intercom à la cadence d'échantillonnage
-        UART4_SendIntercom_Sample(sample10);
-    }
-    else
-    {
-        if (ADC_index < BUFFER_SIZE)
-        {
-            audioBuffer[ADC_index++] = sample10;
-            //threshold = 1;
-            OnLed(0);
-        }
-        else
-        {
-            compteur++;
-        }
-
-        if (ADC_index >= BUFFER_SIZE)
-        {
-            ADC_Stop();
-        }
-    }
-
-    // Clear flag de l'ADC à la fin
-    IFS0bits.AD1IF = 0;
+    AD1CON1bits.ON = 1;     
 }
 
-//Arret de l'ADC
-void ADC_Stop()
-{
-    AD1CON1bits.ON = 0;
-    IEC0bits.AD1IE = 0;
-    IFS0bits.AD1IF = 0;
-    compteur=0;
+int ADC_Read_Manuel(int canal) {
+    int rawADC;
+
+    AD1CHSbits.CH0SA = canal; 
+    
+    AD1CON1bits.SAMP = 1;     
+    delay_us(10);             
+    AD1CON1bits.SAMP = 0;    
+    
+    while (!AD1CON1bits.DONE); 
+    
+    rawADC = ADC1BUF0;      
+
+    if (rawADC > 494 && rawADC < 530) {
+        rawADC = 512;
+    }
+    
+    return rawADC;       
+}
+
+int calculer_vitesse() {
+    int rawADCY = ADC_Read_Manuel(17);
+    int devY = 512 - rawADCY; 
+    if (devY < 0) devY = 0; 
+
+    int vitesse = (devY * 100) / 480; 
+    if (vitesse > 100) vitesse = 100;
+    return vitesse;
+}
+
+float calculer_angle_joystick() {
+    int rawADCX = ADC_Read_Manuel(16); 
+    int deviationX = rawADCX - 512;
+    return ((float)deviationX * 45.0f) / 490.0f;
 }

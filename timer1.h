@@ -5,27 +5,22 @@
     Louis-Félix Goneau (gonl2802)
 
   @File Name
-    adc.h
+    timer1.h
 
  **/
 /* ************************************************************************** */
 
-#ifndef _ADC_H  
-#define _ADC_H
+#ifndef _TIMER1_H  
+#define _TIMER1_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-    void ADC_Init_Manuel();
-    int ADC_Read_Manuel(int canal);
-    int calculer_vitesse();
-    float calculer_angle_joystick();
-
+    
+    void Timer1_Init();
+    
 #ifdef __cplusplus
 }
 #endif
 
 #endif 
-
-

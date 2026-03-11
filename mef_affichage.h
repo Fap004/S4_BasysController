@@ -5,27 +5,31 @@
     Louis-Félix Goneau (gonl2802)
 
   @File Name
-    adc.h
+    mef_affichage.h
 
  **/
 /* ************************************************************************** */
 
-#ifndef _ADC_H  
-#define _ADC_H
+#ifndef _MEF_AFFICHAGE_H  
+#define _MEF_AFFICHAGE_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-    void ADC_Init_Manuel();
-    int ADC_Read_Manuel(int canal);
-    int calculer_vitesse();
-    float calculer_angle_joystick();
+    
+    typedef enum {
+        km_h, 
+        m_s, 
+        m_p_h
+    } Affichage;
+    
+    extern Affichage affichage_actuel;
+    extern volatile unsigned int setup_affichage;
+    
+    void mef_affichage(int vitesse);
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif 
-
-

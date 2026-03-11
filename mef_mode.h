@@ -5,27 +5,30 @@
     Louis-Félix Goneau (gonl2802)
 
   @File Name
-    adc.h
+    mef_mode.h
 
  **/
 /* ************************************************************************** */
 
-#ifndef _ADC_H  
-#define _ADC_H
+#ifndef _MEF_MODE_H  
+#define _MEF_MODE_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-    void ADC_Init_Manuel();
-    int ADC_Read_Manuel(int canal);
-    int calculer_vitesse();
-    float calculer_angle_joystick();
+    
+    typedef enum {
+        joystick, 
+        hybride 
+    } Mode;
+    
+    extern Mode mode_actuel;
+    extern volatile unsigned int setup_mode;
+    
+    void mef_mode();
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif 
-
-

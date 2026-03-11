@@ -5,27 +5,23 @@
     Louis-Félix Goneau (gonl2802)
 
   @File Name
-    adc.h
+    delay.h
 
  **/
 /* ************************************************************************** */
 
-#ifndef _ADC_H  
-#define _ADC_H
+#ifndef _DELAY_H  
+#define _DELAY_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-    void ADC_Init_Manuel();
-    int ADC_Read_Manuel(int canal);
-    int calculer_vitesse();
-    float calculer_angle_joystick();
-
+    
+    void delay_ms(unsigned int ms);
+    void delay_us(unsigned int us);
+    
 #ifdef __cplusplus
 }
 #endif
 
 #endif 
-
-

@@ -1,42 +1,81 @@
-/*APP3 */
-/* led.c */
-/*
-  Créateur :   paif1582 et RODL6305
-  Date :      7 février 2026
-  Revision :  1.0
+/* ************************************************************************** */
+/** Descriptive File Name
 
-  DESCRIPTION :
- Main faisant l'initiation et apres l'appel de la MEF et de la gestion du son
+  @Author
+    Louis-Félix Goneau (gonl2802)
 
-  ENTRÉES :
-       
-  ENTRÉES/SORTIES :
-  
-  SORTIES :   
+  @File Name
+    main.c
 
-  RETOUR :
-    <Fournir le nom de la variable retournée par la fonction avec une brève
-     description d'elle-même.>
-*/
+ **/
+/* ************************************************************************** */
 
 #include <xc.h>
 #include <sys/attribs.h>
-
-#include "config.h"
+#include <math.h>
+#include <stdio.h>
 #include "config_bits.h"
-#include "mef.h"
-#include "sys_init.h"
-#include "led.h"
+#include "config.h"
+#include "broches.h"
+#include "mef_affichage.h"
+#include "mef_mode.h"
+#include "lcd.h"
+#include "timer1.h"
+#include "accelerometre.h"
+#include "i2c.h"
+#include "adc.h" 
+#include "uart.h"
 
-volatile Etat_t Etat = ETAT_ATT;    //Etat Attente soit celle initial
+#define RAD_TO_DEG 57.29577951f
 
-int main(void)
-{
-    sys_init();             // Initiation du système
-    Etat = ETAT_ATT;        // Assignation de l'état de base
+int main() {
+    float angleDeg;
+    int angleAffichage;
+    int vitesse;
+    char uartBuffer[64];
+    float v_convertie;
+    
+    config_broches();
+    LCD_Init();
+    Timer1_Init();
+    I2C_Init();
+    ACL_Init();
+    ADC_Init_Manuel(); 
+    UART_Init(9600);
+    
+    macro_enable_interrupts();
+    
+    while(1){
+        vitesse = calculer_vitesse();
 
-    while (1)
-    {
-        mef();              //MEF controlant les modes
+        if (mode_actuel == hybride) {
+            angleDeg = calculer_angle_accel();
+        } 
+        else {
+            angleDeg = calculer_angle_joystick();
+        }
+ 
+        angleAffichage = (int)fabsf(angleDeg);
+        if (angleAffichage > 45) angleAffichage = 45;
+        
+        SevenSegments_SetNumber(angleAffichage);
+        mef_affichage(vitesse); 
+        mef_mode();
+        
+        if (affichage_actuel == km_h) { 
+            sprintf(uartBuffer, "Angle: %2d deg | Vitesse: %3d km/h\r\n", angleAffichage, vitesse);
+            UART4_PutString(uartBuffer);
+        } else if (affichage_actuel == m_s) {
+            v_convertie = (float)vitesse * 0.2778f;
+            sprintf(uartBuffer, "Angle: %2d deg | Vitesse:%4.1f m/s\r\n", angleAffichage, (double)v_convertie);
+            UART4_PutString(uartBuffer);
+        } else {
+            v_convertie = (float)vitesse * 0.6213f;
+            sprintf(uartBuffer, "Angle: %2d deg | Vitesse: %3d mph\r\n", angleAffichage, (int)v_convertie);
+            UART4_PutString(uartBuffer);
+        }
+        
+        delay_ms(20);
     }
-} 
+    return 0;
+}

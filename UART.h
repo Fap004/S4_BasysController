@@ -1,14 +1,28 @@
-#ifndef _UART_H
+/* ************************************************************************** */
+/** Descriptive File Name
+
+  @Author
+    Louis-Félix Goneau (gonl2802)
+
+  @File Name
+    uart.h
+
+ **/
+/* ************************************************************************** */
+
+#ifndef _UART_H  
 #define _UART_H
-#include <stdint.h>
-#include <stddef.h>
-#include <stdbool.h>
 
-#define UART_RX_BUF_SIZE 128    //buffer 8 BITS
-#define UART_RX_BUF10_SIZE 128  //Buffer 10 BITS
+#ifdef __cplusplus
+extern "C" {
+#endif
+    
+    void UART4_PutChar(unsigned char c);
+    void UART4_PutString(const char* s);
+    void UART_Init(unsigned int baudrate);
+    
+#ifdef __cplusplus
+}
+#endif
 
-extern volatile uint8_t uartRxBuf[UART_RX_BUF_SIZE];
-extern volatile unsigned short uartRxWr;
-extern volatile unsigned short uartRxRd;
-
-#endif /* _UART_H */
+#endif 
