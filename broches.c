@@ -17,13 +17,6 @@
 
 void config_broches()
 {
-    /* UART */
-    TRISFbits.TRISF12 = 0;    
-    TRISFbits.TRISF13 = 1;    
-    
-    RPF12R = 0b0010;          
-    U4RXR = 0b1001; 
-    
     /* DELs */
     TRISACLR = 0x00FF; 
     LATACLR = 0x00FF; 
