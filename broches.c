@@ -33,6 +33,10 @@ void config_broches()
     TRISBbits.TRISB8 = 1;  
     ANSELBbits.ANSB8 = 0;
     
+    /* BTNU (RB1) */
+    TRISBbits.TRISB1 = 1; 
+    ANSELBbits.ANSB1 = 0; 
+    
     /* LCD */
     TRISBbits.TRISB15 = 0; // RB15 (DISP_RS)
     ANSELBbits.ANSB15 = 0;  
