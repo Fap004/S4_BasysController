@@ -34,6 +34,7 @@ int main() {
     int vitesse;
     char uartBuffer[64];
     float v_convertie;
+    int bouton_precedent = 0;
     
     config_broches();
     LCD_Init();
@@ -47,7 +48,14 @@ int main() {
     
     while(1){
         
-        UART4_PutChar(PORTBbits.RB1); 
+        int bouton_actuel = PORTBbits.RB1;
+
+        // Si le bouton est appuyé MAINTENANT mais ne l'était PAS avant
+        if (bouton_actuel == 1 && bouton_precedent == 0) {
+            UART4_PutChar(1); // On envoie le signal une seule fois
+        }
+
+        bouton_precedent = bouton_actuel;
         
         vitesse = calculer_vitesse();
 
