@@ -26,6 +26,7 @@
 #include "adc.h" 
 #include "uart.h"
 
+
 #define RAD_TO_DEG 57.29577951f
 
 int main() {
@@ -43,19 +44,11 @@ int main() {
     ACL_Init();
     ADC_Init_Manuel(); 
     UART_Init(115200);
+
     
     macro_enable_interrupts();
     
     while(1){
-        
-        int bouton_actuel = PORTBbits.RB1;
-
-        // Si le bouton est appuyé MAINTENANT mais ne l'était PAS avant
-        if (bouton_actuel == 1 && bouton_precedent == 0) {
-            UART4_PutChar(1); // On envoie le signal une seule fois
-        }
-
-        bouton_precedent = bouton_actuel;
         
         vitesse = calculer_vitesse();
 
@@ -85,7 +78,8 @@ int main() {
 //            sprintf(uartBuffer, "Angle: %2d deg | Vitesse: %3d mph\r\n", angleAffichage, (int)v_convertie);
 //            UART4_PutString(uartBuffer);
 //        }
-        
+
+        // Garde ton delay pour ne pas saturer la communication
         delay_ms(20);
     }
     return 0;

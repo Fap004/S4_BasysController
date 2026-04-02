@@ -7,21 +7,10 @@
       <itemPath>ADC.h</itemPath>
       <itemPath>config.h</itemPath>
       <itemPath>config_bits.h</itemPath>
-      <itemPath>led.h</itemPath>
-      <itemPath>microphone.h</itemPath>
-      <itemPath>timers.h</itemPath>
-      <itemPath>OC.h</itemPath>
       <itemPath>mef.h</itemPath>
-      <itemPath>sys_init.h</itemPath>
-      <itemPath>test.h</itemPath>
-      <itemPath>volume.h</itemPath>
-      <itemPath>button.h</itemPath>
-      <itemPath>recording.h</itemPath>
-      <itemPath>speaker.h</itemPath>
-      <itemPath>play.h</itemPath>
       <itemPath>UART.h</itemPath>
-      <itemPath>UART_Tx.h</itemPath>
-      <itemPath>UART_Rx.h</itemPath>
+      <itemPath>spi.h</itemPath>
+      <itemPath>leds.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -54,6 +43,8 @@
       <itemPath>uart.c</itemPath>
       <itemPath>uart.h</itemPath>
       <itemPath>adc.c</itemPath>
+      <itemPath>spi.c</itemPath>
+      <itemPath>leds.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -249,6 +240,7 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
         <property key="memories.dataflash" value="true"/>

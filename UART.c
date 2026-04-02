@@ -14,6 +14,7 @@
 #include <sys/attribs.h>
 #include "config.h"
 #include "uart.h"
+#include "broches.h"
 
 void UART4_PutChar(unsigned char c) {
     

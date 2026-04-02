@@ -77,4 +77,5 @@ void config_broches()
     
     RPF12R = 0b0010;       
     U4RXR = 0b1001;
+    
 }
