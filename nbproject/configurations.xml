@@ -4,13 +4,17 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>ADC.h</itemPath>
       <itemPath>config.h</itemPath>
       <itemPath>config_bits.h</itemPath>
-      <itemPath>mef.h</itemPath>
-      <itemPath>UART.h</itemPath>
       <itemPath>spi.h</itemPath>
-      <itemPath>leds.h</itemPath>
+      <itemPath>delay.h</itemPath>
+      <itemPath>i2c.h</itemPath>
+      <itemPath>lcd.h</itemPath>
+      <itemPath>joystick.h</itemPath>
+      <itemPath>uart.h</itemPath>
+      <itemPath>ssd.h</itemPath>
+      <itemPath>mef.h</itemPath>
+      <itemPath>acl.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -20,31 +24,16 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.c</itemPath>
-      <itemPath>7segments.c</itemPath>
-      <itemPath>7segments.h</itemPath>
       <itemPath>Makefile</itemPath>
-      <itemPath>accelerometre.c</itemPath>
-      <itemPath>accelerometre.h</itemPath>
-      <itemPath>adc.h</itemPath>
-      <itemPath>broches.c</itemPath>
-      <itemPath>broches.h</itemPath>
       <itemPath>delay.c</itemPath>
-      <itemPath>delay.h</itemPath>
       <itemPath>i2c.c</itemPath>
-      <itemPath>i2c.h</itemPath>
       <itemPath>lcd.c</itemPath>
-      <itemPath>lcd.h</itemPath>
-      <itemPath>mef_affichage.c</itemPath>
-      <itemPath>mef_affichage.h</itemPath>
-      <itemPath>mef_mode.c</itemPath>
-      <itemPath>mef_mode.h</itemPath>
-      <itemPath>timer1.c</itemPath>
-      <itemPath>timer1.h</itemPath>
-      <itemPath>uart.c</itemPath>
-      <itemPath>uart.h</itemPath>
-      <itemPath>adc.c</itemPath>
       <itemPath>spi.c</itemPath>
-      <itemPath>leds.c</itemPath>
+      <itemPath>joystick.c</itemPath>
+      <itemPath>acl.c</itemPath>
+      <itemPath>ssd.c</itemPath>
+      <itemPath>mef.c</itemPath>
+      <itemPath>uart.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

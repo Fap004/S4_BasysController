@@ -1,8 +1,15 @@
 #include <xc.h>
 #include <sys/attribs.h>
+#include <stdint.h>
+#include <stdlib.h>
 #include "config.h"
+
 #include "spi.h"
-#include "leds.h"
+#include "mef.h"      
+#include "joystick.h" 
+#include "acl.h"      
+#include "lcd.h"
+#include "ssd.h"
 
 void SPIJA_Init()
 {
@@ -34,7 +41,7 @@ void SPIJA_ConfigurePins()
     // Configure SPIJA signals as digital inputs.
     tris_SPIJA_SO = 1;
     
-    // Configure remapable pins
+    // configure remapable pins
     rp_SPIJA_SI = 0x06; // RPC1R = 0110 = SDO2
     rp_SPIJA_SO = 0x0A;// SDI2R = 1010 = RPC4
     
@@ -57,7 +64,6 @@ void SPIJA_TransferBytes(int bytesNumber, unsigned char *pbRdData, unsigned char
 {
     int i;
     lat_SPIJA_CE = 0; // Activate SS
-    OnLed(6);
     for(i = 0; i< bytesNumber; i++)
     {
         pbRdData[i] = SPIJA_RawTransferByte(pbWrData[i]);
@@ -70,7 +76,33 @@ void SPIJA_Close()
     SPI2CONbits.ON = 0; // disable SPI
 }
 
+void SPIJA_WriteTrame(signed char angle, signed char vitesse)
+{
+    static unsigned char bWr[2];
+    static unsigned char bRd[1];  
+    
+    bWr[0] = angle;  
+    bWr[1] = vitesse; 
 
-/* *****************************************************************************
- End of File
- */
+    SPIJA_TransferBytes(2, bRd, bWr);
+    
+//    TEST AVEC CHIP SELECT
+    
+    
+//    unsigned char bWr;
+//    unsigned char bRd;
+//
+//    // --- ENVOI DE L'ANGLE ---
+//    lat_SPIJA_CE = 0;           // On active le CS
+//    bWr = (unsigned char)angle;
+//    SPIJA_RawTransferByte(bWr); // On envoie uniquement l'angle
+//    lat_SPIJA_CE = 1;           // On désactive (L'ESP32 voit une fin de trame)
+//
+//    // --- ENVOI DE LA VITESSE ---
+//    lat_SPIJA_CE = 0;           // On réactive le CS
+//    bWr = (unsigned char)vitesse;
+//    SPIJA_RawTransferByte(bWr); // On envoie uniquement la vitesse
+//    lat_SPIJA_CE = 1;           // On désactive 
+    
+}
+
