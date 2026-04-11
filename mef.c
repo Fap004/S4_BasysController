@@ -14,6 +14,8 @@ Affichage affichage_actuel = km_h;
 
 void mef_mode() {
     int valBTNC = PORTFbits.RF0;
+    int valSW1 = PORTFbits.RF5;
+    
     static int valBTNC_prec = 0;
     
     if (valBTNC == 1 && valBTNC_prec == 0) 
@@ -38,10 +40,15 @@ void mef_mode() {
         vitesse = ACL_GetRawY_8bit();
         LCD_WriteStringAtPos("Mode: Hybride   ", 1, 0);
     }
-
+    
     SSD_WriteDecimal((unsigned int)abs(angle));
     
-    SPIJA_WriteTrame(angle, vitesse);
+    if (valSW1){
+        SPIJA_WriteTrame(angle, vitesse);
+        LCD_WriteStringAtPos("S", 0, 15);
+    } else {
+        LCD_WriteStringAtPos(" ", 0, 15);
+    }
 }
 
 void mef_affichage(int vitesse) 

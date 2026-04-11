@@ -24,7 +24,7 @@ int main()
     SPIJA_Init();
     ACL_Init();
     SSD_Init();
-    UART_Init(400000);
+    UART_Init(460800);
     
     TRISAbits.TRISA0 = 0; TRISAbits.TRISA1 = 0; 
     TRISAbits.TRISA5 = 0; TRISAbits.TRISA6 = 0; 

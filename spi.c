@@ -14,7 +14,7 @@
 void SPIJA_Init()
 {
     SPIJA_ConfigurePins();
-    SPIJA_ConfigureSPI(1000000, 0, 1); // configures SPI to work at 1 Mhz, polarity 0 and edge 1.
+    SPIJA_ConfigureSPI(700000, 0, 1); // configures SPI to work at 1 Mhz, polarity 0 and edge 1.
 }
 
 void SPIJA_ConfigureSPI(unsigned int spiFreq, unsigned char pol, unsigned char edge)
