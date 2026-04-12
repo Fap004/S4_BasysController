@@ -78,31 +78,12 @@ void SPIJA_Close()
 
 void SPIJA_WriteTrame(signed char angle, signed char vitesse)
 {
-    static unsigned char bWr[2];
-    static unsigned char bRd[1];  
+    static signed char bWr[2];
+    static signed char bRd[1];  
     
     bWr[0] = angle;  
     bWr[1] = vitesse; 
 
     SPIJA_TransferBytes(2, bRd, bWr);
-    
-//    TEST AVEC CHIP SELECT
-    
-    
-//    unsigned char bWr;
-//    unsigned char bRd;
-//
-//    // --- ENVOI DE L'ANGLE ---
-//    lat_SPIJA_CE = 0;           // On active le CS
-//    bWr = (unsigned char)angle;
-//    SPIJA_RawTransferByte(bWr); // On envoie uniquement l'angle
-//    lat_SPIJA_CE = 1;           // On désactive (L'ESP32 voit une fin de trame)
-//
-//    // --- ENVOI DE LA VITESSE ---
-//    lat_SPIJA_CE = 0;           // On réactive le CS
-//    bWr = (unsigned char)vitesse;
-//    SPIJA_RawTransferByte(bWr); // On envoie uniquement la vitesse
-//    lat_SPIJA_CE = 1;           // On désactive 
-    
 }
 
