@@ -1,5 +1,6 @@
 #include <xc.h>
 #include <sys/attribs.h>
+#include <stdio.h>
 
 #include "config.h"
 #include "mef.h"
@@ -12,9 +13,10 @@
 Mode mode_actuel = joystick;
 Affichage affichage_actuel = km_h;
 
-void mef_mode() {
+void mef_mode() 
+{
     int valBTNC = PORTFbits.RF0;
-    int valSW1 = PORTFbits.RF5;
+    int valSW3 = PORTDbits.RD15;
     
     static int valBTNC_prec = 0;
     
@@ -43,11 +45,11 @@ void mef_mode() {
     
     SSD_WriteDecimal((unsigned int)abs(angle));
     
-    if (valSW1){
+    if (valSW3){
         SPIJA_WriteTrame(angle, vitesse);
-        LCD_WriteStringAtPos("S", 0, 15);
+        LATAbits.LATA3 = 1;
     } else {
-        LCD_WriteStringAtPos(" ", 0, 15);
+        LATAbits.LATA3 = 0;
     }
 }
 

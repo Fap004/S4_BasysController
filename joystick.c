@@ -39,7 +39,7 @@ signed char ADC_8_Bits_Signed(unsigned int adc_val)
 
     if (adc_val > 1023) adc_val = 1023;
 
-    if (adc_val > 489 && adc_val < 520) 
+    if (adc_val > 487 && adc_val < 520) 
     {
         adc_val = 512;
     }
@@ -51,10 +51,10 @@ signed char ADC_8_Bits_Signed(unsigned int adc_val)
 
 signed char ADC_GetValX()
 {
-    return ADC_8_Bits_Signed(ADC_AnalogRead(17));
+    return ADC_8_Bits_Signed(ADC_AnalogRead(19));
 }
 
 signed char ADC_GetValY()
 {
-    return ADC_8_Bits_Signed(ADC_AnalogRead(19));
+    return ADC_8_Bits_Signed(ADC_AnalogRead(17));
 }
