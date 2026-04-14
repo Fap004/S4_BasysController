@@ -15,6 +15,7 @@ Affichage affichage_actuel = km_h;
 
 void mef_mode() {
     int valBTNC = PORTFbits.RF0;
+    int valSW3 = PORTDbits.RD15;
     
     static int valBTNC_prec = 0;
     
@@ -43,7 +44,13 @@ void mef_mode() {
 
     SSD_WriteDecimal((unsigned int)abs(angle));
     
-    SPIJA_WriteTrame(angle, vitesse);
+    if (valSW3){
+        SPIJA_WriteTrame(angle, vitesse);
+        LATAbits.LATA3 = 1;
+    }
+    else{
+        LATAbits.LATA3 = 0;
+    }
 }
 
 void mef_affichage(int vitesse) 
