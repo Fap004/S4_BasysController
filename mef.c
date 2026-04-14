@@ -13,10 +13,8 @@
 Mode mode_actuel = joystick;
 Affichage affichage_actuel = km_h;
 
-void mef_mode() 
-{
+void mef_mode() {
     int valBTNC = PORTFbits.RF0;
-    int valSW3 = PORTDbits.RD15;
     
     static int valBTNC_prec = 0;
     
@@ -39,18 +37,13 @@ void mef_mode()
     } 
     else { 
         angle = ADC_GetValX();
-        vitesse = ACL_GetRawY_8bit();
+        vitesse = ACL_GetRawY();
         LCD_WriteStringAtPos("Mode: Hybride   ", 1, 0);
     }
-    
+
     SSD_WriteDecimal((unsigned int)abs(angle));
     
-    if (valSW3){
-        SPIJA_WriteTrame(angle, vitesse);
-        LATAbits.LATA3 = 1;
-    } else {
-        LATAbits.LATA3 = 0;
-    }
+    SPIJA_WriteTrame(angle, vitesse);
 }
 
 void mef_affichage(int vitesse) 

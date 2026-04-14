@@ -28,7 +28,7 @@ const unsigned char digitSegments[]=
 unsigned char digits[4];
 #define TMR_TIME    0.003 // 3000 us for each tick
 
-void __ISR(_TIMER_1_VECTOR, ipl7) Timer1ISR(void) 
+void __ISR(_TIMER_1_VECTOR, IPL7AUTO) Timer1ISR(void) 
 {  
     static unsigned char idxCurrDigit = 0;
     unsigned char currDigit, idx;
@@ -152,12 +152,6 @@ void SSD_WriteDigits(unsigned char d1, unsigned char d2, unsigned char d3, unsig
         digits[3] |= 0x80;
     }    
   T1CONbits.ON = 1;                   //  turn on Timer1
-}
-
-void SSD_WriteDigitsGrouped(unsigned int val, unsigned char dp)
-{
-    SSD_WriteDigits(val & 0xF, (val & 0xF0) >> 4, (val & 0xF00) >> 8, (val & 0xF000) >> 12,
-            dp&1, (dp & 2) >> 1, (dp & 4) >> 2, (dp & 8) >> 3);
 }
 
 void SSD_Close()
