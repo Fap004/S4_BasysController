@@ -1,6 +1,7 @@
 #include <xc.h>
 #include <sys/attribs.h>
 #include <stdio.h>
+#include <stdint.h>
 
 #include "config.h"
 #include "uart.h"
